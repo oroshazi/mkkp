@@ -52,7 +52,7 @@ class App extends Component {
 					 	<div style={{
 			          marginLeft: '125px',
 								float: 'left',
-								backgroundColor: 'red',
+								backgroundColor: 'grey',
 			        }}>
 							<Route exact path='/' component={Home}/>
 							<Route path='/partyprogram' component={PartyProgram}/>
