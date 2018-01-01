@@ -52,7 +52,7 @@ export default class CProfile extends React.Component {
           <CardSubtitle> {this.props.callbackFromPrent.city}</CardSubtitle>
           <CardText> {this.state.shortDesc[id].description}</CardText>
 
-          <CModal show={this.state.isOpen} onClose={this.toggleModal}/>
+          <CModal show={this.state.isOpen} onClose={this.toggleModal} propsFromProf={this.props}/>
         </CardBody>
       </Card>
     </div>
