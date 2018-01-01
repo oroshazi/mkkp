@@ -67,12 +67,15 @@ class HuMap extends Component {
   handleMarkerClick(i) {
     console.log("Marker: ", this.state.cities[i])
   }
-
+  //Changing circle color & r attr + passing data to parent onMouseOver
   handleMarkerMouseOver(i){
     var cir = document.getElementById(i)
-    console.log(cir.r);
     cir.style.fill = "#E91E63";
     cir.setAttribute("r", this.state.circleR);
+
+    this.props.callbackFromParent(this.state.cities[i])
+
+
     //cir.r = this.setState((state) => ({circleR: 10}));
     //  this.setState((state) => ({ fillprop: "#E91E63" }));
   }
@@ -112,7 +115,9 @@ class HuMap extends Component {
 
     return (
       <div>
-      <svg width={ 800 } height={ 600 } viewBox="0 0 800 450">
+        <h1> Az MKKP jelöltjei</h1>
+        <h4> mi mindenhol ottvagyunk </h4>
+      <svg style={{width: '800px', height:'520'}} viewBox="0 0 800 450">
         <g className="admin_6.json"  >
           {
             this.state.worlddata.map((d,i) => (

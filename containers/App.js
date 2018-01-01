@@ -40,19 +40,20 @@ class App extends Component {
 							height: '100%',
 							position: 'fixed',
 							float: 'left',
-							width: '125px',
-							backgroundColor: 'black'
+							width: '125px'
 						}}>
 							<div class="NavBar" style={{paddigTop: '20%'}} >
 
-								<NavBar />
+								<NavBar dark />
 							</div>
 						</div>
 
 					 	<div style={{
 			          marginLeft: '125px',
 								float: 'left',
-								backgroundColor: 'grey',
+                height: '100%',
+                width:'100%'
+
 			        }}>
 							<Route exact path='/' component={Home}/>
 							<Route path='/partyprogram' component={PartyProgram}/>

@@ -8,7 +8,7 @@ export default class News extends React.Component{
     return(
         <div>
           News
-          <HuMap/>
+          ide jön majd az api call a worpresstől
         </div>
 
     );

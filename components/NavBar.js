@@ -21,7 +21,7 @@ export default class NavBar extends React.Component {
 
 
       <div style={{marginTop: '50%'}}>
-        <Navbar color="faded" light >
+        <Navbar color="faded" dark >
           <Nav vertical >
             <NavItem>
               <Link to="/">Főoldal</Link>
