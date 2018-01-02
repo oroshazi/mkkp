@@ -1,13 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.css';
 
-// main routes
-import AppRoutes from './routes';
-import App from './containers/App';
+import React 				from 'react';
+import ReactDOM 		from 'react-dom';
+import { Provider } from 'react-redux';
 
-import store from './store';
+// main routes
+import AppRoutes 		from './routes';
+import App 					from './containers/App';
+
+import store 				from './store';
 
 ReactDOM.render(
 	<Provider store={store}>

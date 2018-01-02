@@ -1,8 +1,16 @@
-import React from 'react';
-import { Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button } from 'reactstrap';
+import React           from 'react';
+import { Card,
+         CardImg,
+         CardText,
+         CardBody,
+         CardTitle,
+         CardSubtitle,
+         Button }      from 'reactstrap';
 
-import CModal from './CModal';
+import DataStore       from '../flux/stores/DataStore.js'
+import CModal          from './CModal';
+
+
 
 export default class CProfile extends React.Component {
   constructor(){
@@ -32,6 +40,7 @@ export default class CProfile extends React.Component {
 
   render(){
 
+
   if (this.props.callbackFromPrent.id == null) {
     var id = 0;
   }else {
@@ -44,7 +53,7 @@ export default class CProfile extends React.Component {
 
     console.log(id);
     return(
-      <div style={{margin:'60px'}} >
+      <div style={{margin:'60px', padding: '100px'}} >
       <Card style={{width: '200px', height:'400px' }} >
         <CardImg src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
         <CardBody>
@@ -52,7 +61,7 @@ export default class CProfile extends React.Component {
           <CardSubtitle> {this.props.callbackFromPrent.city}</CardSubtitle>
           <CardText> {this.state.shortDesc[id].description}</CardText>
 
-          <CModal show={this.state.isOpen} onClose={this.toggleModal} propsFromProf={this.props}/>
+          <CModal show={this.state.isOpen } onClose={this.toggleModal} propsFromProf={this.props}/>
         </CardBody>
       </Card>
     </div>

@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import {connect}          from 'react-redux';
 import {Link, BrowserRouter, Switch, Route} from 'react-router-dom';
 
-import {setMessage} from '../actions/message';
-import InputPreview from '../components/InputPreview';
-import HuMap from '../components/HuMap';
-import NavBar from '../components/NavBar';
+import {setMessage}       from '../actions/message';
+import DataStore          from '../flux/stores/DataStore.js';
+
+import InputPreview       from '../components/InputPreview';
+import HuMap              from '../components/HuMap';
+import NavBar             from '../components/NavBar';
 
 
 import PartyProgram from './PartyProgram';
@@ -21,6 +23,9 @@ class App extends Component {
   }
 
   render() {
+
+    let allPages = DataStore.getAll();
+    console.log(allPages);
 
     const {message} = this.props.messageReducer;
     console.log(this.props.children);
