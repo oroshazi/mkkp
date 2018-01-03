@@ -1,5 +1,5 @@
 import axios from 'axios';
-import alt   from '../alt/alt.js';
+import alt   from '../alt/alt';
 
 class DataActions {
 
@@ -8,6 +8,7 @@ class DataActions {
 
         this.pagesEndPoint = `${appUrl}/wp-json/wp/v2/pages`; // Endpoint for getting Wordpress Pages
         this.postsEndPoint = `${appUrl}/wp-json/wp/v2/posts`; // Endpoint for getting Wordpress Posts
+        console.log(this.postsEndPoint);
     }
 
     // Method for getting data from the provided end point url

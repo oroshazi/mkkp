@@ -25,7 +25,7 @@ class App extends Component {
   render() {
 
     let allPages = DataStore.getAll();
-    console.log(allPages);
+    console.log('app.js: ', DataStore);
 
     const {message} = this.props.messageReducer;
     console.log(this.props.children);

@@ -5,6 +5,7 @@ import { Button,
          ModalBody,
          ModalFooter }    from 'reactstrap';
 import PropTypes          from 'prop-types';
+import DataStore          from '../flux/stores/DataStore';
 
 
 
@@ -15,6 +16,7 @@ import PropTypes          from 'prop-types';
       super(props);
       this.state = {
         modal: false,
+        posts: []
         };
 
       this.toggle = this.toggle.bind(this);
@@ -29,9 +31,19 @@ import PropTypes          from 'prop-types';
 
 
     render() {
-      //console.log(product.id);
-    //  console.log('pagedata: ', DataStore.getPageBySlug('about'));
+
+      let pageBySlug = DataStore.getPageBySlug('ezpedigacim');
+
+    //  let acf = allPosts.acf;
+
+      console.log('hello világ: ', DataStore.getAllPosts()[0]);
+      console.log('pageBySlug: ', pageBySlug)
+//    console.log(product.id);
+      console.log('pagedata: ', DataStore.getPageBySlug('kovacs-bela').content);
       var candidate = this.props.propsFromProf.callbackFromPrent.candidate;
+      var id = this.props.propsFromProf.callbackFromPrent.id;
+//    console.log('#############################ID#######################', acf);
+//              {DataStore.getAllPosts()[0].content.rendered} --> Modal body
 
       return (
         <div>
@@ -41,25 +53,7 @@ import PropTypes          from 'prop-types';
             <ModalHeader toggle={this.toggle}>{candidate}</ModalHeader>
             <ModalBody>
               szöveg WP-ről:
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-              sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-              aliquyam erat, sed diam voluptua. At vero eos et accusam et justo
-              duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-              sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-              consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-              ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
-              eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-              o sea takimata sanctus est Lorem ipsum dolor sit amet.
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-              sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-              aliquyam erat, sed diam voluptua. At vero eos et accusam et justo
-              duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-              sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-              consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-              ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
-              eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-              o sea takimata sanctus est Lorem ipsum dolor sit amet.
-
+                {DataStore.getPageBySlug('kovacs-bela').content.rendered}
             </ModalBody>
             <ModalFooter>
               <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
