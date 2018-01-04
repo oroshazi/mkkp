@@ -1,5 +1,5 @@
-import axios from 'axios';
-import alt   from '../alt/alt';
+import axios        from 'axios';
+import alt          from '../alt/alt';
 
 class DataActions {
 

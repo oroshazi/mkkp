@@ -28,22 +28,11 @@ import DataStore          from '../flux/stores/DataStore';
       });
     }
 
-
-
     render() {
 
       let pageBySlug = DataStore.getPageBySlug('ezpedigacim');
-
-    //  let acf = allPosts.acf;
-
-      console.log('hello világ: ', DataStore.getAllPosts()[0]);
-      console.log('pageBySlug: ', pageBySlug)
-//    console.log(product.id);
-      console.log('pagedata: ', DataStore.getPageBySlug('kovacs-bela').content);
       var candidate = this.props.propsFromProf.callbackFromPrent.candidate;
       var id = this.props.propsFromProf.callbackFromPrent.id;
-//    console.log('#############################ID#######################', acf);
-//              {DataStore.getAllPosts()[0].content.rendered} --> Modal body
 
       return (
         <div>
@@ -65,14 +54,6 @@ import DataStore          from '../flux/stores/DataStore';
     }
   }
 
-//  Modal.propTypes = {
-//  onClose: PropTypes.func.isRequired,
-//  show: PropTypes.bool,
-//  children: PropTypes.node
-//};
-//{this.props.buttonLabel}
 
-
-//      //  {DataStore.getPageBySlug("pelda-jelolt1")}
 
 export default CModal;

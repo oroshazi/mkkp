@@ -1,8 +1,11 @@
-import React     from     'react';
+import React        from 'react';
 
-import HuMap     from     '../components/HuMap';
-import CProfil   from     '../components/CProfil'
-import DataStore from     '../flux/stores/DataStore.js'
+import HuMap        from '../components/HuMap';
+import CList        from '../components/CList';
+import CProfil      from '../components/CProfil';
+
+import DataStore    from '../flux/stores/DataStore.js';
+
 
 
 
@@ -23,12 +26,13 @@ export default class Candidates extends React.Component {
 
       return(
 
-      <div style={{display:'flex', flexDirection: 'row'}} >
-        <HuMap callbackFromParent={this.myCallback}/>
-        <CProfil callbackFromPrent={this.state.datafromchild}/>
-      </div>
+        <div style={{display:'flex', flexDirection: 'row'}} >
+          <HuMap callbackFromParent={this.myCallback}/>
+          <CProfil callbackFromPrent={this.state.datafromchild}/>
+          <CList callbackFromPrent={this.state.datafromchild} />
+        </div>
 
     );
-        //rowC{display:flex; flex-direction:row;}
+
   }
 }

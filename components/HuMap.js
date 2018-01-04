@@ -1,6 +1,10 @@
-import React, { Component } from "react"
-import { geoMercator, geoPath, geoAlbers, geoCentroid,geoAlbersUsa } from "d3-geo"
-import { feature } from "topojson-client"
+import React, { Component }       from "react"
+import { geoMercator,
+        geoPath,
+        geoAlbers,
+        geoCentroid,
+        geoAlbersUsa }            from "d3-geo"
+import { feature }                from "topojson-client"
 
 class HuMap extends Component {
   constructor() {
@@ -67,6 +71,7 @@ class HuMap extends Component {
   handleMarkerClick(i) {
     console.log("Marker: ", this.state.cities[i])
   }
+
   //Changing circle color & r attr + passing data to parent onMouseOver
   handleMarkerMouseOver(i){
     var cir = document.getElementById(i)
@@ -75,21 +80,14 @@ class HuMap extends Component {
 
     this.props.callbackFromParent(this.state.cities[i])
 
-
-    //cir.r = this.setState((state) => ({circleR: 10}));
-    //  this.setState((state) => ({ fillprop: "#E91E63" }));
   }
 
   handleMarkerMouseLeave(i){
     var cir = document.getElementById(i)
     cir.style.fill = "#748aad";
     cir.setAttribute("r", this.state.circler);
-    //cir.r = this.setState((state) => ({circleR: 7}));
-    //this.setState((state) => ({ fillprop: "#748aad" }));
+
   }
-
-
-
 
   componentDidMount() {
     fetch("/admin_6.json")
