@@ -53,7 +53,7 @@ export default class CProfile extends React.Component {
 
     console.log(id);
     return(
-      <div style={{margin:'60px', padding: '100px'}} >
+      <div style={{margin:'60px', paddingTop: '100px'}} >
       <Card style={{width: '200px', height:'400px' }} >
         <CardImg src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
         <CardBody>

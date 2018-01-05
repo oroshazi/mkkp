@@ -2,7 +2,7 @@ import React from 'react';
 
 import DataStore from '../flux/stores/DataStore';
 
-import HuMap from '../components/HuMap';
+
 
 export default class News extends React.Component{
 

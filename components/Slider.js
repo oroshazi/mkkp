@@ -1,29 +1,34 @@
 import React, { Component }     from 'react';
-import {
-  Carousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselCaption
-}                               from 'reactstrap';
+import {  Carousel,
+          CarouselItem,
+          CarouselControl,
+          CarouselIndicators,
+          CarouselCaption}      from 'reactstrap';
+import DataStore                from '../flux/stores/DataStore'
 
 const items = [
   {
-    id: 1,
-    altText: 'Slide 1',
-    caption: 'Slide 1'
+    id: 0,
+    altText: 'alszöveg',
+    caption: 'felszöveg'
   },
   {
-    id: 2,
+    id: 1,
     altText: 'Slide 2',
     caption: 'Slide 2'
   },
   {
-    id: 3,
+    id: 2,
     altText: 'Slide 3',
     caption: 'Slide 3'
   }
 ];
+
+const style = {
+  'more-link':{
+    display:'none'
+  }
+}
 
 export default class Example extends Component {
   constructor(props) {
@@ -34,6 +39,8 @@ export default class Example extends Component {
     this.goToIndex = this.goToIndex.bind(this);
     this.onExiting = this.onExiting.bind(this);
     this.onExited = this.onExited.bind(this);
+
+
   }
 
   onExiting() {
@@ -64,16 +71,51 @@ export default class Example extends Component {
   render() {
     const { activeIndex } = this.state;
 
+    //####################################################
+    var allPosts = DataStore.getAllPosts();
+
+    var post = new Array (DataStore.getLastThreePosts()[0],
+                DataStore.getLastThreePosts()[1],
+                DataStore.getLastThreePosts()[2])
+
+    // getLastThreePosts[].title/excerpt/featured.rendered
+    //vagy: allPosts = allPosts.sortBy(allPosts, [function(post) { return post.date_order; }]);
+    console.log('getAllposts: slider: ', DataStore.getAllPosts());
+    console.log('allPosts order:   ', allPosts);
+    console.log('post:    :', post);
+    console.log('excerpt:   ',  post[0]);
+    //####################################################
+
+
+
+    //TODO: add featured img to slider
     const slides = items.map((item) => {
       return (
+
         <CarouselItem
+
           className="custom-tag"
           tag="div"
           key={item.id}
           onExiting={this.onExiting}
           onExited={this.onExited}
         >
-          <CarouselCaption className="text-danger" captionText={item.caption} captionHeader={item.caption} />
+          <style>
+            {
+              `.more-link {
+                  display:none;
+                }`
+            }
+          </style>
+          <img src={post[0].featured_media[47]} />
+          <CarouselCaption
+
+            className="text-danger"
+            captionText={<div style={style} dangerouslySetInnerHTML={{__html: post[item.id].excerpt.rendered}}></div> }
+            captionHeader={<div dangerouslySetInnerHTML={{__html: post[item.id].title.rendered}}></div>}
+           >
+             <h3 dangerouslySetInnerHTML={{__html: post[item.id].excerpt.rendered}}></h3>
+           </CarouselCaption>
         </CarouselItem>
       );
     });

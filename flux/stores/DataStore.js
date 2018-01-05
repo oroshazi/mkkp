@@ -11,10 +11,11 @@ class DataStore {
         });
 
         this.exportPublicMethods({
-            getAll:         this.getAll,
-            getAllPages:    this.getAllPages,
-            getAllPosts:    this.getAllPosts,
-            getPageBySlug:  this.getPageBySlug
+            getAll:             this.getAll,
+            getAllPages:        this.getAllPages,
+            getAllPosts:        this.getAllPosts,
+            getPageBySlug:      this.getPageBySlug,
+            getLastThreePosts:  this.getLastThreePosts
         });
     }
 
@@ -44,6 +45,14 @@ class DataStore {
         return pages[Object.keys(pages).find((page, i) => {
             return pages[page].slug === slug;
         })] || {};
+    }
+
+    // TODO: Returns last three posts ordered by date
+    getLastThreePosts(){
+      const posts = this.getState().data.posts;
+      return posts
+
+
     }
 
 }

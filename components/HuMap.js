@@ -79,7 +79,7 @@ class HuMap extends Component {
               <path
                 key={ `path-${ i }` }
                 d={ geoPath().projection(this.projection())(d) }
-                fill={ `rgba(38,50,56,${ 1 / this.state.worlddata.length * i})` }
+                fill={ `rgba(25,25,25,${ 1 / this.state.worlddata.length * i})` }
                 stroke="#FFFFFF"
                 strokeWidth={ 1 }
                 onClick={ () => this.handleCountryClick(i) }

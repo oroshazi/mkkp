@@ -57,7 +57,8 @@ class App extends Component {
 			          marginLeft: '125px',
 								float: 'left',
                 height: '100%',
-                width:'1000px'
+                backgroundColor: 'grey',
+                width:'960px'
 
 			        }}>
 							<Route exact path='/' component={Home}/>
