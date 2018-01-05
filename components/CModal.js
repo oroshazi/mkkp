@@ -30,9 +30,11 @@ import DataStore          from '../flux/stores/DataStore';
 
     render() {
 
-      let pageBySlug = DataStore.getPageBySlug('ezpedigacim');
+      let pageBySlug = DataStore.getPageBySlug('kovacs-bela');
       var candidate = this.props.propsFromProf.callbackFromPrent.candidate;
       var id = this.props.propsFromProf.callbackFromPrent.id;
+
+      console.log('wp-rest-api object:  ', pageBySlug);
 
       return (
         <div>
@@ -40,13 +42,13 @@ import DataStore          from '../flux/stores/DataStore';
           <Modal isOpen={this.state.modal} modalTransition={{ timeout: 20 }} backdropTransition={{ timeout: 20 }}
             toggle={this.toggle} className={this.props.className}>
             <ModalHeader toggle={this.toggle}>{candidate}</ModalHeader>
-            <ModalBody>
-              szöveg WP-ről:
-                {DataStore.getPageBySlug('kovacs-bela').content.rendered}
+            <ModalBody dangerouslySetInnerHTML={{ __html: DataStore.getPageBySlug('kovacs-bela').content.rendered}}>
+            
+
             </ModalBody>
             <ModalFooter>
               <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-              <Button color="secondary" onClick={this.toggle} >Cancel</Button>
+              <Button color="secondary" onClick={this.toggle} > Kilépes </Button>
             </ModalFooter>
           </Modal>
         </div>

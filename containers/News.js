@@ -1,16 +1,19 @@
 import React from 'react';
 
+import DataStore from '../flux/stores/DataStore';
+
 import HuMap from '../components/HuMap';
 
 export default class News extends React.Component{
 
   render(){
+    console.log(DataStore.getPageBySlug('news'));
+    var htitle = DataStore.getPageBySlug('news').title.rendered;
+    var hcontent = DataStore.getPageBySlug('news').content.rendered;
     return(
-        <div>
-          News
-          ide jön majd az api call a worpresstől
-        </div>
+        <div style={{marginTop:'200px'}} dangerouslySetInnerHTML={{ __html: hcontent}}>
 
+        </div>
     );
   }
 }

@@ -6,7 +6,7 @@ import React        from 'react';
 export default class CList extends React.Component {
 
   render(){
-      console.log('c-list: ',  this.props.callbackFromPrent);
+      console.log('c-list: ',  this.props.cProps[1].id);
     return(
       <div>
 
