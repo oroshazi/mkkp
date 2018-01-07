@@ -74,17 +74,28 @@ export default class Example extends Component {
     //####################################################
     var allPosts = DataStore.getAllPosts();
 
-    var post = new Array (DataStore.getLastThreePosts()[0],
+    //Last three posts
+    var post = new Array (
+                DataStore.getLastThreePosts()[0],
                 DataStore.getLastThreePosts()[1],
-                DataStore.getLastThreePosts()[2])
+                DataStore.getLastThreePosts()[2]
+              );
+    // featuredmedia of last three posts
+  /*  var fimg = new Array (
+                post[0]._links["wp:featuredmedia"][0].href,
+                post[1]._links["wp:featuredmedia"][0].href,
+                post[2]._links["wp:featuredmedia"][0].href
+              ); */
 
     // getLastThreePosts[].title/excerpt/featured.rendered
     //vagy: allPosts = allPosts.sortBy(allPosts, [function(post) { return post.date_order; }]);
     console.log('getAllposts: slider: ', DataStore.getAllPosts());
     console.log('allPosts order:   ', allPosts);
     console.log('post:    :', post);
-    console.log('excerpt:   ',  post[0]);
-    //####################################################
+    console.log('excerpt:   ',  post[0]._links["wp:featuredmedia"][0].href);
+    console.log('embedded request:  ', post[0]);
+    var kep = post[0]._links["wp:featuredmedia"][0].href.toString();
+    //####################################################   http://local.wordpress.test/index.php/wp-json/wp/v2/media/47
 
 
 
@@ -94,7 +105,7 @@ export default class Example extends Component {
 
         <CarouselItem
 
-          className="custom-tag"
+          className='d-block img-fluid'
           tag="div"
           key={item.id}
           onExiting={this.onExiting}
@@ -107,15 +118,17 @@ export default class Example extends Component {
                 }`
             }
           </style>
-          <img src={post[0].featured_media[47]} />
+
           <CarouselCaption
 
             className="text-danger"
             captionText={<div style={style} dangerouslySetInnerHTML={{__html: post[item.id].excerpt.rendered}}></div> }
             captionHeader={<div dangerouslySetInnerHTML={{__html: post[item.id].title.rendered}}></div>}
            >
-             <h3 dangerouslySetInnerHTML={{__html: post[item.id].excerpt.rendered}}></h3>
+
            </CarouselCaption>
+           <img src={'http://local.wordpress.test/wp-content/uploads/2018/01/amazing-animal-beautiful-beautifull.jpg'} alt={'some text'} />
+
         </CarouselItem>
       );
     });
