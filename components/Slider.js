@@ -33,7 +33,17 @@ const style = {
 export default class Example extends Component {
   constructor(props) {
     super(props);
-    this.state = { activeIndex: 0 };
+    this.state = {
+       activeIndex: 0,
+       imgStyle : {
+             minWidth: '100%',
+             maxWidth: '100%',
+             height: '500px',
+             background: 'black',
+             opacity: '0.4',
+             filter: 'grayscale(0%)'
+       }
+    };
     this.next = this.next.bind(this);
     this.previous = this.previous.bind(this);
     this.goToIndex = this.goToIndex.bind(this);
@@ -68,6 +78,12 @@ export default class Example extends Component {
     this.setState({ activeIndex: newIndex });
   }
 
+  handleMouseOver() {
+    var ctag = this.refs.sliderimages;
+  //    ctag.setState(this.state.imgStyle);
+
+  }
+
   render() {
     const { activeIndex } = this.state;
 
@@ -93,19 +109,21 @@ export default class Example extends Component {
     console.log('allPosts order:   ', allPosts);
     console.log('post:    :', post);
     console.log('excerpt:   ',  post[0]._links["wp:featuredmedia"][0].href);
-    console.log('embedded request:  ', post[0]);
+    console.log('embedded request:  ', post[0]._embedded["wp:featuredmedia"][0].link);
     var kep = post[0]._links["wp:featuredmedia"][0].href.toString();
+    var kep2 = post[0]._embedded["wp:featuredmedia"][0].source_url;
+    console.log('custom tag:   ', this.refs.sliderimages );
     //####################################################   http://local.wordpress.test/index.php/wp-json/wp/v2/media/47
 
 
 
-    //TODO: add featured img to slider
+
     const slides = items.map((item) => {
       return (
 
         <CarouselItem
 
-          className='d-block img-fluid'
+          className='d-block img-fluid '
           tag="div"
           key={item.id}
           onExiting={this.onExiting}
@@ -115,20 +133,29 @@ export default class Example extends Component {
             {
               `.more-link {
                   display:none;
+                }
+                .boldtxt {
+                  font-weight: 1000;
                 }`
             }
           </style>
-
+          <div className="custom-tag">
           <CarouselCaption
 
-            className="text-danger"
-            captionText={<div style={style} dangerouslySetInnerHTML={{__html: post[item.id].excerpt.rendered}}></div> }
-            captionHeader={<div dangerouslySetInnerHTML={{__html: post[item.id].title.rendered}}></div>}
+            className=" "
+            captionText={<div className=" text-dark boldtxt"
+              dangerouslySetInnerHTML={{__html: post[item.id].excerpt.rendered}}>
+              </div> }
+            captionHeader={<div className=" text-dark boldtxt"
+              dangerouslySetInnerHTML={{__html: post[item.id].title.rendered}}>
+              </div>}
+
+            onMouseEnter={ console.log('slider img: ', this.refs.sliderimages)}
            >
 
            </CarouselCaption>
-           <img src={'http://local.wordpress.test/wp-content/uploads/2018/01/amazing-animal-beautiful-beautifull.jpg'} alt={'some text'} />
-
+           <img className="grad" ref = "sliderimages" src={post[item.id]._embedded["wp:featuredmedia"][0].source_url} alt={'some text'} />
+           </div>
         </CarouselItem>
       );
     });
@@ -138,9 +165,21 @@ export default class Example extends Component {
         <style>
           {
             `.custom-tag {
+                min-width: 100%;
                 max-width: 100%;
-                height: 500px;
-                background: black;
+                height: 420px;
+                opacity: 1;
+                z-index: 1;
+              }
+              .custom-tag:hover{
+                opacity: .6;
+              }
+              .grad {
+                min-width: 100%;
+                max-width: 100%;
+                height: 420px;
+                z-index: -1;
+
               }`
           }
         </style>
