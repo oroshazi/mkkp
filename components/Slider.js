@@ -24,10 +24,12 @@ const items = [
   }
 ];
 
-const style = {
-  'more-link':{
-    display:'none'
-  }
+
+
+const txtStyle ={
+  backgroundColor: 'black',
+  color: 'white',
+  opacity: '.7'
 }
 
 export default class Example extends Component {
@@ -143,10 +145,11 @@ export default class Example extends Component {
           <CarouselCaption
 
             className=" "
-            captionText={<div className=" text-dark boldtxt"
+
+            captionText={<div className="boldtxt"  style = {txtStyle}
               dangerouslySetInnerHTML={{__html: post[item.id].excerpt.rendered}}>
               </div> }
-            captionHeader={<div className=" text-dark boldtxt"
+            captionHeader={<div className="  boldtxt" style = {txtStyle}
               dangerouslySetInnerHTML={{__html: post[item.id].title.rendered}}>
               </div>}
 

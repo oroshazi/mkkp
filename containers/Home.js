@@ -1,15 +1,24 @@
 import React              from 'react';
 import { Link }           from 'react-router-dom';
+import { Container,
+         Row,
+         Col }            from 'reactstrap';
 
 import Slider             from '../components/Slider';
 
 import DataStore          from '../flux/stores/DataStore';
 
 
-const divstyle = [{
+const divstyle = {
   display: 'inline-block',
   width: '49%'
-}]
+};
+const colStyle = {
+  paddingTop: '.75rem',
+  paddingBottom: '.75rem',
+  border: '3px solid #C9C1D5',
+  color: '#5F5F5F'
+};
 
 export default class Home extends React.Component{
 
@@ -27,20 +36,42 @@ export default class Home extends React.Component{
         <div className='slider' >
           <Slider/>
         </div>
-         <div style={{marginTop:'200px'}} dangerouslySetInnerHTML={{ __html: hcontent}}>
-        </div>
 
-        <div className='left' style={divstyle} >
-          <Link to={'/partyprogram'}>
-            <img
-             style={{maxWidth:'100%'}}
-             src={'../src/ResizedImage560305-Promise-logo-Blue.png'}
-             onMouseOver= {this.handleMouseOver()}
+        <Container>
+          <Row>
+            <Col style = {colStyle}>.<img
+                style={{maxWidth:'100%', border: '1px'}}
+                src={'../src/ResizedImage560305-Promise-logo-Blue.png'}
+                onMouseOver= {this.handleMouseOver()}
             />
-          </Link>
-          </div>
+            </Col>
+            <Col>.szöveg a jeleőltekhez szöveg a jeleőltekhez   szöveg a jeleőltekhez</Col>
+          </Row>
+      </Container>
+      <Container>
+        <Row>
+          <Col>.szöveg a jeleőltekhez szöveg a jeleőltekhez   szöveg a jeleőltekhez</Col>
+          <Col style = {colStyle}>.
+            <img
+              style={{maxWidth:'20%%', border: '1px'}}
+              src={'../src/4442.png'}
+              onMouseOver= {this.handleMouseOver()}
+          />
+          </Col>
 
-        <div className='right' style={divstyle} > tekintse meg a kidolgozott politikai programunkat </div>
+        </Row>
+      </Container>
+      <Container>
+        <Row >
+          <Col style = {colStyle}>.<img
+            style={{maxWidth:'100%', border: '1px'}}
+            src={'../src/ResizedImage560305-Promise-logo-Blue.png'}
+            onMouseOver= {this.handleMouseOver()}
+          />
+          </Col>
+          <Col>.szöveg a jeleőltekhez szöveg a jeleőltekhez   szöveg a jeleőltekhez</Col>
+        </Row>
+      </Container>
 
       </div>
 
@@ -48,3 +79,6 @@ export default class Home extends React.Component{
     );
   }
 }
+
+
+// <div  <!--style={{marginTop:'200px'}} dangerouslySetInnerHTML={{ __html: hcontent}}> </div>
