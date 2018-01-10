@@ -6,9 +6,14 @@ import App from '../containers/App';
 import PartyProgram from '../containers/PartyProgram';
 import News from '../containers/News'
 
+
+
+
 export default class NavBar extends React.Component {
 
-// Oldalsó menüsor
+// navigaion bar
+
+
 
   render() {
 
@@ -18,22 +23,46 @@ export default class NavBar extends React.Component {
 
     return (
 
+      <div>
+        <style>
+          {
+            `.nav-item {
 
+                color: #f3f3f3;
+                padding-left: 10px;
+                text-decoration: none;
+                background-color: transparent;
+                -webkit-text-decoration-skip: objects;
+              }
+              .nav-item:hover {
 
-      <div style={{marginTop: '50%'}}>
-        <Navbar color="faded" dark >
+              }
+              .nav-link{
+                display: block;
+                color: #f3f3f3;
+                text-decoration: none;
+              }
+              .nav-link:hover{
+                display: block;
+                color: #f3f3f3;
+                text-decoration: none;
+                background-color: rgba(32, 29, 30, 0.82);
+              }`
+          }
+        </style>
+        <Navbar color="faded" light expand="md" >
           <Nav  >
-            <NavItem>
-              <Link to="/">Főoldal</Link>
+            <NavItem className = "nav-item" >
+              <Link className = "nav-link" to="/">Főoldal</Link>
             </NavItem>
-            <NavItem>
-              <Link to="/candidates">Jelőltek</Link>
+            <NavItem className = "nav-item" >
+              <Link className = "nav-link"to="/candidates">Jelőltek</Link>
             </NavItem>
-            <NavItem>
-              <Link to="/news">Hírek</Link>
+            <NavItem className = "nav-item" >
+              <Link className = "nav-link" to="/news">Hírek</Link>
             </NavItem>
-            <NavItem>
-              <Link to="/partyprogram"> Párt program</Link>
+            <NavItem className = "nav-item" >
+              <Link className = "nav-link"to="/partyprogram"> Párt program</Link>
             </NavItem>
           </Nav>
         </Navbar>

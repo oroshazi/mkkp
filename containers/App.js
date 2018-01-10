@@ -32,32 +32,34 @@ class App extends Component {
 
     return (<div style={{}}>
       <div style={{
-
+          backgroundColor: 'rgba(217, 172, 172, 0.19)',
           width: '100%',
-          height: '100%',
-					backgroundColor:'red'
+          height: '100%'
 
         }}>
 
 				<BrowserRouter>
 					<div>
 						<div class="SideContainer" style={{
-							height: '100%',
+							height: '40px',
 							position: 'fixed',
-							float: 'left',
-							width: '125px'
-						}}>
-							<div class="NavBar" style={{paddigTop: '20%'}} >
+							float: 'top',
+							width: '100%',
+              overflow: 'hidden',
+              backgroundColor: 'rgba(58, 69, 102, 1)',
+              zIndex: '1'
 
-								<NavBar dark />
+						}}>
+							<div class="NavBar" style={{}} >
+								<NavBar />
 							</div>
 						</div>
 
 					 	<div style={{
-			          marginLeft: '125px',
-								float: 'left',
-                height: '100%',
-                backgroundColor: 'rgba(196, 230, 228, 0.2)',
+			          margin: '0 auto',
+                paddingTop: '40px',
+								height: '100%',
+                backgroundColor: 'rgba(251, 249, 249, 0.87)',
                 width:'960px'
 
 			        }}>

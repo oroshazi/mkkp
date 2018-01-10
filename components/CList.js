@@ -12,6 +12,8 @@ import { Table }          from 'reactstrap';
 
 export default class CList extends React.Component {
 
+
+
   render(){
     console.log('this.props.cProps: ', this.props.cProps);
 
@@ -64,7 +66,7 @@ export default class CList extends React.Component {
 
 
     return(
-      <div>
+      <div style={{ margin: '0 auto'}}>
         {candidateList}
     </div>
     );
