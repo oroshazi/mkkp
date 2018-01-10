@@ -8,7 +8,7 @@ export default class PartyProgram extends React.Component {
 	render () {
 		return (
 			<div>
-				<CList></CList>
+				
 			</div>
 		)
 	}

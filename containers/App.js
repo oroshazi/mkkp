@@ -57,7 +57,7 @@ class App extends Component {
 			          marginLeft: '125px',
 								float: 'left',
                 height: '100%',
-                backgroundColor: 'grey',
+                backgroundColor: 'rgba(196, 230, 228, 0.2)',
                 width:'960px'
 
 			        }}>
