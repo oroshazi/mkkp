@@ -58,8 +58,8 @@ export default class Candidates extends React.Component {
 
       return(
 
-        <div style={{display:'flex', flexDirection: 'row'}} >
-          {/*<HuMap cProps={this.state} callbackFromParent={this.myCallback}/>*/}
+        <div style={{}} >
+          <HuMap cProps={this.state} callbackFromParent={this.myCallback}/>
           {/*<CProfil callbackFromPrent={this.state.datafromchild}/>*/}
           <CList cProps={this.state.cities} />
         </div>

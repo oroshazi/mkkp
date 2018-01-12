@@ -23,9 +23,9 @@ class HuMap extends Component {
   }
   projection() {
     return geoMercator()
-      .scale(6000 )
-      .translate([1000 /2, 600 /2])
-      .center([20,47]);
+      .scale(6200 )
+      .translate([825 /2, 400 /2])
+      .center([19.30, 47.11]);
   }
 
   handleCountryClick(countryIndex) {
@@ -70,9 +70,8 @@ class HuMap extends Component {
 
     return (
       <div>
-        <h1> Az MKKP jelöltjei</h1>
-        <h4> mi mindenhol ottvagyunk </h4>
-      <svg style={{width: '800px', height:'520'}} viewBox="0 0 800 450">
+
+      <svg style={{width: '900px', height:'600'}} viewBox="0 0 800 450">
         <g className="admin_6.json"  >
           {
             this.state.worlddata.map((d,i) => (
