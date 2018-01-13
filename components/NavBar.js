@@ -12,18 +12,8 @@ import News from '../containers/News'
 export default class NavBar extends React.Component {
 
 // navigaion bar
-
-
-
   render() {
-
-
-
-    console.log(this.props.children);
-
-    return (
-
-      <div>
+    return (<div>
         <style>
           {
             `.nav-item {
@@ -66,7 +56,7 @@ export default class NavBar extends React.Component {
             </NavItem>
           </Nav>
         </Navbar>
-      </div>
-    );
+
+      </div>);
   }
 }

@@ -12,6 +12,7 @@ import { Button,
 
 //TODO: refactoring needed
 //TODO: featured image for candidates
+//TODO: onclick event fires modal
 
 export default class CList extends React.Component {
   constructor (props) {

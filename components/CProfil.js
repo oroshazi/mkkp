@@ -27,7 +27,6 @@ export default class CProfile extends React.Component {
         { description: "ez a leírás az nyolcadik jelölthöz"},
         { description: "ez a leírás az kilencedik jelölthöz"}
       ],
-
       isOpen: false
     }
   }
