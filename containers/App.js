@@ -32,7 +32,7 @@ class App extends Component {
 
     return (<div style={{}}>
       <div style={{
-          backgroundColor: 'rgba(217, 172, 172, 0.19)',
+          backgroundColor: 'rgba(54, 41, 41, 0.75)',
           width: '100%',
           height: '100%'
 

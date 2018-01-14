@@ -4,19 +4,32 @@ import { Container,
          Col }            from 'reactstrap';
 
 import DataStore          from '../flux/stores/DataStore';
+import Slider             from '../components/Slider';
 
 
 const tagStyle ={
-  border: '1px solid rgba(135, 140, 144, 0.83)',
-  height:'120px',
+
   width:'100%',
   paddingRight: '0px',
   paddingReft: '0px'
 }
+const titleStyle = {
+  height:'60px',
+  width:'100%',
+  paddingRight: '0px',
+  paddingReft: '0px',
+  textAlign: 'center'
+}
+
 const colStyle = {
   paddingRight: '0px',
   paddingLeft: '0px',
-  margin: '2px'
+  margin: '2px',
+  borderStyle:'solid',
+  borderRadius: '20px',
+  overflow: 'hidden'
+
+
 
 }
 const rowStyle = {
@@ -26,14 +39,25 @@ const rowStyle = {
 
 const newsStyle = {
   height: '100%',
-  border: '1px solid rgba(135, 140, 144, 0.83)',
-  width:'100%',
+  width:'100px',
   paddingRight: '0px',
-  paddingReft: '0px'
+  paddingReft: '0px',
+
 }
 const excerptStyle = {
   height: '300px',
-  border: '1px solid rgba(135, 140, 144, 0.83)',
+  width:'100%',
+  paddingRight: '0px',
+  paddingReft: '0px',
+  overflow: 'hidden',
+  marginTop: '30px',
+  textAlign: 'center',
+  verticalAlign: 'inherit'
+
+
+}
+const featuredStyle = {
+  height: '300px',
   width:'100%',
   paddingRight: '0px',
   paddingReft: '0px',
@@ -53,13 +77,17 @@ const textStyle = {
 }
 
 export default class News extends React.Component{
+  constructor(props) {
+    super(props);
+
+    this.handleclick = this.handleclick.bind(this);
+  }
 
 componentDidMount () {
   var allPosts = DataStore.getAllPosts();
   return allPosts;
 }
-/*allPosts[i]._embedded["wp:featuredmedia"][0].source_url != "" ? allPosts[i]._embedded["wp:featuredmedia"][0].source_url :
-  dangerouslySetInnerHTML={{__html: allPosts[i].title.rendered}}*/
+
   render(){
   var allPosts = this.componentDidMount();
   console.log(allPosts[0].title);
@@ -67,7 +95,7 @@ componentDidMount () {
   for(var i = 0; i< allPosts.length; i++){
     postsCol.push((
         <Col style={colStyle}>
-          <div style={{position: 'relative', fontFamily: ' Arial', height:'150px'}}>
+          <div style={{position: 'relative', height:'150px'}}>
             <img
               style={{height: '100%', width:'100%'}}
               className="grad"
@@ -85,6 +113,7 @@ componentDidMount () {
     ));
     console.log('kép:   ', (allPosts[i]._embedded["wp:featuredmedia"]) ? allPosts[i]._embedded["wp:featuredmedia"][0].source_url :  'ninskép');
   }
+
   var postsList = [];
   for(var i = 0; i < allPosts.length; i++){
     postsList.push((
@@ -96,33 +125,55 @@ componentDidMount () {
     ));
   }
 
+  var newsList = [];
+  for (var i = 0; i < allPosts.length; i ++) {
+    newsList.push((
+      <li data={allPosts[i]} onClick={ (e) => this.handleclick(e)}>{allPosts[i].title.rendered}</li>
+  ));
+  console.log('newsList: ', allPosts[i]);
+  }
+
     return(<div>
 
       <Container>
         <Row>
           <Col className="tag-bar" style={colStyle} >
             <div style={tagStyle}>
-              ide jönnek a teg.ek
+              <Slider/>
             </div>
           </Col>
         </Row>
       </Container>
       <Container>
         <Row>
+
           <Col className="title" style={colStyle} >
-            <div style={tagStyle}>
+            <div style={{maxWidth:'750px'}}>
+            <div style={titleStyle}>
               <h1>{allPosts[0].title.rendered}</h1>
             </div>
             <Row style={rowStyle}>
 
-              <Col className="excerpt" style={excerptStyle} >
-                <div style={{}} dangerouslySetInnerHTML={{__html: allPosts[0].excerpt.rendered}}>
+              <Col className="excerpt" style={colStyle} >
+                <div style={excerptStyle} dangerouslySetInnerHTML={{__html: allPosts[0].excerpt.rendered}}>
 
                 </div>
               </Col>
 
-              <Col className="featured-img" style={excerptStyle} >
-                <div style={{excerptStyle}}>
+              <Col className="featured-img" style={colStyle} onClick={(e) => this.handleclick(e)} >
+                <style>
+                  {
+                    `.more-link {
+                      display:none;
+                    }
+                    .img {
+                      vertical-align: middle;
+                      border-style: none;
+                      max-width: 350px;
+                    }`
+                  }
+                </style>
+                <div style={{featuredStyle}}>
                    <img className="img" ref = "sliderimages" src={allPosts[0]._embedded["wp:featuredmedia"][0].source_url} alt={'some text'} />
                 </div>
               </Col>
@@ -131,13 +182,19 @@ componentDidMount () {
 
               {postsList}
 
-
+            </div>
           </Col>
 
 
-          <Col className="news-list" style={colStyle}>
-            <div style={newsStyle}>
-              hírek lista
+          <Col className="news-list" xs="3" style={colStyle}>
+            <div style={{newsStyle}}>
+
+              <ul>
+                  {newsList}
+              </ul>
+
+
+
             </div>
           </Col>
 
@@ -147,5 +204,9 @@ componentDidMount () {
     </div>);
   }
 
+  handleclick (e) {
+    console.log('e.target: ', e.target.data);
+    console.log('this.state: ', this.state);
 
+  }
 }
