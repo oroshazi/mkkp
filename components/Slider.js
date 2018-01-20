@@ -4,7 +4,8 @@ import {  Carousel,
           CarouselControl,
           CarouselIndicators,
           CarouselCaption}      from 'reactstrap';
-import DataStore                from '../flux/stores/DataStore'
+import { Link }                 from 'react-router-dom';
+import DataStore                from '../flux/stores/DataStore';
 
 const items = [
   {
@@ -94,7 +95,7 @@ export default class Example extends Component {
                 DataStore.getLastThreePosts()[2]
               );
 
-
+    console.log('post: : :: : : ', post[0].slug);
     const slides = items.map((item) => {
       return (
 
@@ -106,6 +107,7 @@ export default class Example extends Component {
           onExiting={this.onExiting}
           onExited={this.onExited}
         >
+          <Link to={'/posts/' + post[item.id].slug}>
           <style>
             {
               `.more-link {
@@ -130,8 +132,10 @@ export default class Example extends Component {
            </CarouselCaption>
            <img className="grad" ref = "sliderimages" src={post[item.id]._embedded["wp:featuredmedia"][0].source_url} alt={'some text'} />
            </div>
+         </Link>
         </CarouselItem>
       );
+
     });
 
     return (

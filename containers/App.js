@@ -10,10 +10,11 @@ import HuMap              from '../components/HuMap';
 import NavBar             from '../components/NavBar';
 
 
-import PartyProgram from './PartyProgram';
-import News from './News'
-import Home from './Home'
-import Candidates from './Candidates';
+import PartyProgram       from './PartyProgram';
+import News               from './News'
+import Home               from './Home'
+import Candidates         from './Candidates';
+import Posts              from './Posts';
 
 
 class App extends Component {
@@ -67,6 +68,7 @@ class App extends Component {
 							<Route path='/partyprogram' component={PartyProgram}/>
 							<Route path='/candidates' component={Candidates}/>
 							<Route path='/news' component={News}/>
+              <Route path='/posts/:slug' component={Posts}/>
 						</div>
 					</div>
 		</BrowserRouter>

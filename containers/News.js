@@ -2,6 +2,7 @@ import React              from 'react';
 import { Container,
          Row,
          Col }            from 'reactstrap';
+import { Link }           from 'react-router-dom';
 
 import DataStore          from '../flux/stores/DataStore';
 import Slider             from '../components/Slider';
@@ -28,10 +29,8 @@ const colStyle = {
   borderStyle:'solid',
   borderRadius: '20px',
   overflow: 'hidden'
-
-
-
 }
+
 const rowStyle = {
   marginLeft: '0',
   marginRight: '0'
@@ -79,8 +78,11 @@ const textStyle = {
 export default class News extends React.Component{
   constructor(props) {
     super(props);
+    this.state = {
+      link: ""
+    }
 
-    this.handleclick = this.handleclick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
 componentDidMount () {
@@ -90,12 +92,24 @@ componentDidMount () {
 
   render(){
   var allPosts = this.componentDidMount();
+  var slugs= [];
+  for(var i = 0; i< allPosts.length; i++){
+    slugs.push((allPosts[i].slug))
+  }
+
+
   console.log(allPosts[0].title);
   var postsCol =[];
   for(var i = 0; i< allPosts.length; i++){
+  //  slugs.push((allPosts[i].slug))
     postsCol.push((
+
         <Col style={colStyle}>
-          <div style={{position: 'relative', height:'150px'}}>
+          <Link to={'/posts/' + slugs[i]}>
+          <div style={{position: 'relative', height:'150px'}}
+            id = {i}
+            onClick={(e) => this.handleClick(slugs, e)}
+            >
             <img
               style={{height: '100%', width:'100%'}}
               className="grad"
@@ -109,13 +123,16 @@ componentDidMount () {
           </div>
 
           </div>
+          </Link>
         </Col>
+
     ));
     console.log('kép:   ', (allPosts[i]._embedded["wp:featuredmedia"]) ? allPosts[i]._embedded["wp:featuredmedia"][0].source_url :  'ninskép');
+    console.log('slug', slugs);
   }
 
   var postsList = [];
-  for(var i = 0; i < allPosts.length; i++){
+  for(var i = 1; i < allPosts.length; i++){
     postsList.push((
       <Row style = {rowStyle}>
         {postsCol[i++]}
@@ -128,9 +145,20 @@ componentDidMount () {
   var newsList = [];
   for (var i = 0; i < allPosts.length; i ++) {
     newsList.push((
-      <li data={allPosts[i]} onClick={ (e) => this.handleclick(e)}>{allPosts[i].title.rendered}</li>
+
+      <li
+        data={allPosts[i]}
+        id = {i}
+        onClick={(e) => this.handleClick(slugs, e)}
+
+        >
+          <Link to={'/posts/' + slugs[i]}>
+          {allPosts[i].title.rendered}
+          </Link>
+        </li>
+
   ));
-  console.log('newsList: ', allPosts[i]);
+  console.log('link: ', this.state.link);
   }
 
     return(<div>
@@ -149,18 +177,36 @@ componentDidMount () {
 
           <Col className="title" style={colStyle} >
             <div style={{maxWidth:'750px'}}>
+            <Link to={'/posts/' + slugs[0]}>
             <div style={titleStyle}>
-              <h1>{allPosts[0].title.rendered}</h1>
+
+              <h1
+                id = {0}
+                onClick={(e) => this.handleClick(slugs, e )}
+                >
+                {allPosts[0].title.rendered}
+              </h1>
             </div>
-            <Row style={rowStyle}>
+          </Link>
+            <Row style={rowStyle}
+              id = {0}
+              onClick={(e) => this.handleClick(slugs, e )}>
 
               <Col className="excerpt" style={colStyle} >
-                <div style={excerptStyle} dangerouslySetInnerHTML={{__html: allPosts[0].excerpt.rendered}}>
+                <Link to={'/posts/' + slugs[0]}>
+                <div
+                  style={excerptStyle}
+                  slug = {allPosts[0].slug}
+
+                  dangerouslySetInnerHTML={{__html: allPosts[0].excerpt.rendered}}
+                  >
 
                 </div>
+              </Link>
               </Col>
 
-              <Col className="featured-img" style={colStyle} onClick={(e) => this.handleclick(e)} >
+              <Col className="featured-img" style={colStyle} >
+                <Link to={'/posts/' + slugs[0]}>
                 <style>
                   {
                     `.more-link {
@@ -176,6 +222,7 @@ componentDidMount () {
                 <div style={{featuredStyle}}>
                    <img className="img" ref = "sliderimages" src={allPosts[0]._embedded["wp:featuredmedia"][0].source_url} alt={'some text'} />
                 </div>
+              </Link>
               </Col>
             </Row>
 
@@ -204,9 +251,9 @@ componentDidMount () {
     </div>);
   }
 
-  handleclick (e) {
-    console.log('e.target: ', e.target.data);
-    console.log('this.state: ', this.state);
 
+  handleClick(slug, e) {
+    var sublink = slug[e.currentTarget.id];
+  
   }
 }

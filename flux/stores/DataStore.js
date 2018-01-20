@@ -15,7 +15,9 @@ class DataStore {
             getAllPages:        this.getAllPages,
             getAllPosts:        this.getAllPosts,
             getPageBySlug:      this.getPageBySlug,
-            getLastThreePosts:  this.getLastThreePosts
+            getLastThreePosts:  this.getLastThreePosts,
+            getPostBySlug:      this.getPostBySlug
+
         });
     }
 
@@ -51,8 +53,14 @@ class DataStore {
     getLastThreePosts(){
       const posts = this.getState().data.posts;
       return posts
+    }
 
 
+    getPostBySlug(slug){
+        const posts = this.getState().data.posts;
+        return posts[Object.keys(posts).find((post, i) => {
+            return posts[post].slug === slug;
+        })] || {};
     }
 
 }
