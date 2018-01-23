@@ -12,6 +12,14 @@ import App 					from './containers/App';
 
 import store 				from './store';
 
+import WebFont from 'webfontloader';
+
+WebFont.load({
+  google: {
+    families: ['Raleway', 'sans-serif']
+  }
+});
+
 
 
 class AppInitializer {

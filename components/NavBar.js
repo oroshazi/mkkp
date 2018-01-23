@@ -2,9 +2,9 @@ import React from 'react';
 import { Nav, NavItem, NavLink, Navbar } from 'reactstrap';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 
-import App from '../containers/App';
-import PartyProgram from '../containers/PartyProgram';
-import News from '../containers/News'
+import App          from '../containers/App';
+import Program      from '../containers/Program';
+import News         from '../containers/News'
 
 
 
@@ -52,7 +52,7 @@ export default class NavBar extends React.Component {
               <Link className = "nav-link" to="/news">Hírek</Link>
             </NavItem>
             <NavItem className = "nav-item" >
-              <Link className = "nav-link"to="/partyprogram"> Párt program</Link>
+              <Link className = "nav-link"to="/program"> Párt program</Link>
             </NavItem>
           </Nav>
         </Navbar>

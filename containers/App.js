@@ -10,7 +10,7 @@ import HuMap              from '../components/HuMap';
 import NavBar             from '../components/NavBar';
 
 
-import PartyProgram       from './PartyProgram';
+import Program            from './Program';
 import News               from './News'
 import Home               from './Home'
 import Candidates         from './Candidates';
@@ -32,6 +32,19 @@ class App extends Component {
     console.log(this.props.children);
 
     return (<div style={{}}>
+
+      <style>
+        <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet" />
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+      </style>
+      <style>
+        {
+          `body {
+            font-family: 'Muli', sans-serif;
+          }`
+        }
+      </style>
+
       <div style={{
           backgroundColor: 'rgba(54, 41, 41, 0.75)',
           width: '100%',
@@ -65,7 +78,7 @@ class App extends Component {
 
 			        }}>
 							<Route exact path='/' component={Home}/>
-							<Route path='/partyprogram' component={PartyProgram}/>
+							<Route path='/program' component={Program}/>
 							<Route path='/candidates' component={Candidates}/>
 							<Route path='/news' component={News}/>
               <Route path='/posts/:slug' component={Posts}/>

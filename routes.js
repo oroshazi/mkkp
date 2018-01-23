@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 
 
 import App from './containers/App';
-import PartyProgram from './containers/PartyProgram';
+import Program from './containers/Program';
 import News from './containers/News'
 
 export default () => {
@@ -11,7 +11,7 @@ export default () => {
 		<BrowserRouter>
 			<Switch>
 			  <Route exact path='/' component={App}/>
-			  <Route path='/partyprogram' component={PartyProgram}/>
+			  <Route path='/program' component={Program}/>
 				<Route path='/news' component={News}/>
 			</Switch>
 		</BrowserRouter>

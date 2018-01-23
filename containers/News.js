@@ -26,8 +26,8 @@ const colStyle = {
   paddingRight: '0px',
   paddingLeft: '0px',
   margin: '2px',
-  borderStyle:'solid',
-  borderRadius: '20px',
+  // borderStyle:'solid',
+  // borderRadius: '20px',
   overflow: 'hidden'
 }
 
@@ -56,8 +56,8 @@ const excerptStyle = {
 
 }
 const featuredStyle = {
-  height: '300px',
-  width:'100%',
+  // height: '300px',
+  // width:'100%',
   paddingRight: '0px',
   paddingReft: '0px',
   marginLeft: 'auto',
@@ -90,34 +90,31 @@ componentDidMount () {
   return allPosts;
 }
 
-  render(){
+render(){
   var allPosts = this.componentDidMount();
   var slugs= [];
   for(var i = 0; i< allPosts.length; i++){
     slugs.push((allPosts[i].slug))
   }
 
-
-  console.log(allPosts[0].title);
   var postsCol =[];
   for(var i = 0; i< allPosts.length; i++){
-  //  slugs.push((allPosts[i].slug))
     postsCol.push((
 
         <Col style={colStyle}>
           <Link to={'/posts/' + slugs[i]}>
-          <div style={{position: 'relative', height:'150px'}}
+          <div style={{position: 'relative', height:'150px', border: '3px solid rgb(17, 22, 6)'}}
             id = {i}
             onClick={(e) => this.handleClick(slugs, e)}
             >
+            <div className="item">
             <img
-              style={{height: '100%', width:'100%'}}
-              className="grad"
+            
               ref = "sliderimages"
               src={(allPosts[i]._embedded["wp:featuredmedia"]) ? allPosts[i]._embedded["wp:featuredmedia"][0].source_url :  'ninskép'}
               alt={'some text'}
             />
-
+          </div>
           <div style={textStyle}>
             <p>{allPosts[i].title.rendered}</p>
           </div>
@@ -145,23 +142,26 @@ componentDidMount () {
   var newsList = [];
   for (var i = 0; i < allPosts.length; i ++) {
     newsList.push((
-
-      <li
-        data={allPosts[i]}
-        id = {i}
+        <Link to={'/posts/' + slugs[i]}>
+      <div className='side-posts'>
+      <li id = {i}
         onClick={(e) => this.handleClick(slugs, e)}
 
         >
-          <Link to={'/posts/' + slugs[i]}>
-          {allPosts[i].title.rendered}
-          </Link>
-        </li>
 
+          {allPosts[i].title.rendered}
+
+        </li>
+      </div>
+  </Link>
   ));
   console.log('link: ', this.state.link);
   }
 
     return(<div>
+      <style>
+
+      </style>
 
       <Container>
         <Row>
@@ -225,7 +225,29 @@ componentDidMount () {
               </Link>
               </Col>
             </Row>
-
+            <style>
+              {
+                `
+              .item {
+                position: relative;
+                min-height: 100%;
+                overflow: hidden;
+                min-width: 100%;
+              }
+              .item img {
+                min-width: 100%;
+                min-height: 100%;
+                -moz-transition: all 0.3s;
+                -webkit-transition: all 0.3s;
+                transition: all 0.3s;
+              }
+              .item:hover img {
+                -moz-transform: scale(1.1);
+                -webkit-transform: scale(1.1);
+                transform: scale(1.1);
+              }`
+                }
+            </style>
 
               {postsList}
 
@@ -234,14 +256,35 @@ componentDidMount () {
 
 
           <Col className="news-list" xs="3" style={colStyle}>
-            <div style={{newsStyle}}>
+            <style>
+              {
+                `.side-posts {
+                  border: 1px solid rgba(135, 140, 144, 0.83);
+                  padding: 14px 25px;
+                  text-align: left;
+                  text-decoration: none;
+                  display: inline-block;
+                  width: 100%;
+                  font-weight: 900;
 
+                }
+                .side-posts:hover {
+                    background-color: red;
+                }
+                .side-posts li {
+                  list-style-type: none;
+                  color: rgb(32, 24, 24);
+                }
+                .side-posts:hover li {
+                  list-style-type: none;
+                  color: white;
+                }`
+              }
+            </style>
+            <div style={{newsStyle}}>
               <ul>
                   {newsList}
               </ul>
-
-
-
             </div>
           </Col>
 
@@ -254,6 +297,5 @@ componentDidMount () {
 
   handleClick(slug, e) {
     var sublink = slug[e.currentTarget.id];
-  
   }
 }

@@ -1,10 +1,11 @@
 import React, { Component }     from 'react';
-import {  Carousel,
-          CarouselItem,
-          CarouselControl,
-          CarouselIndicators,
-          CarouselCaption}      from 'reactstrap';
+import { Carousel,
+         CarouselItem,
+         CarouselControl,
+         CarouselIndicators,
+         CarouselCaption}      from 'reactstrap';
 import { Link }                 from 'react-router-dom';
+
 import DataStore                from '../flux/stores/DataStore';
 
 const items = [
@@ -24,8 +25,6 @@ const items = [
     caption: 'Slide 3'
   }
 ];
-
-
 
 const txtStyle ={
   backgroundColor: 'black',
@@ -95,8 +94,7 @@ export default class Example extends Component {
                 DataStore.getLastThreePosts()[2]
               );
 
-    console.log('post: : :: : : ', post[0].slug);
-    const slides = items.map((item) => {
+      const slides = items.map((item) => {
       return (
 
         <CarouselItem
@@ -130,7 +128,9 @@ export default class Example extends Component {
            >
 
            </CarouselCaption>
-           <img className="grad" ref = "sliderimages" src={post[item.id]._embedded["wp:featuredmedia"][0].source_url} alt={'some text'} />
+            <div className='item'>
+              <img className="" ref = "sliderimages" src={post[item.id]._embedded["wp:featuredmedia"][0].source_url} alt={'some text'} />
+            </div>
            </div>
          </Link>
         </CarouselItem>
@@ -146,18 +146,25 @@ export default class Example extends Component {
                 min-width: 100%;
                 max-width: 100%;
                 height: 420px;
-                opacity: 1;
                 z-index: 1;
               }
-              .custom-tag:hover{
-                opacity: .6;
-              }
-              .grad {
+              .item {
+                position: relative;
+                min-height: 100%;
+                overflow: hidden;
                 min-width: 100%;
+              }
+              .item img {
                 max-width: 100%;
-                height: 420px;
-                z-index: -1;
-
+                min-width: 100%;
+                -moz-transition: all 0.3s;
+                -webkit-transition: all 0.3s;
+                transition: all 0.3s;
+              }
+              .item:hover img {
+                -moz-transform: scale(1.1);
+                -webkit-transform: scale(1.1);
+                transform: scale(1.1);
               }`
           }
         </style>
