@@ -94,7 +94,8 @@ export default class Example extends Component {
                 DataStore.getLastThreePosts()[2]
               );
 
-      const slides = items.map((item) => {
+    console.log('post: : :: : : ', post[0].slug);
+    const slides = items.map((item) => {
       return (
 
         <CarouselItem

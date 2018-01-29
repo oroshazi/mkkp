@@ -96,7 +96,7 @@ render(){
   for(var i = 0; i< allPosts.length; i++){
     slugs.push((allPosts[i].slug))
   }
-
+console.log('allposts:   ', allPosts);
   var postsCol =[];
   for(var i = 0; i< allPosts.length; i++){
     postsCol.push((
@@ -109,7 +109,6 @@ render(){
             >
             <div className="item">
             <img
-            
               ref = "sliderimages"
               src={(allPosts[i]._embedded["wp:featuredmedia"]) ? allPosts[i]._embedded["wp:featuredmedia"][0].source_url :  'ninskép'}
               alt={'some text'}

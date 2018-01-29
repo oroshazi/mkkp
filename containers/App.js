@@ -8,6 +8,7 @@ import DataStore          from '../flux/stores/DataStore.js';
 import InputPreview       from '../components/InputPreview';
 import HuMap              from '../components/HuMap';
 import NavBar             from '../components/NavBar';
+import CandidateFinder    from '../components/CandidateFinder';
 
 
 import Program            from './Program';
@@ -15,6 +16,7 @@ import News               from './News'
 import Home               from './Home'
 import Candidates         from './Candidates';
 import Posts              from './Posts';
+
 
 
 class App extends Component {
@@ -46,7 +48,7 @@ class App extends Component {
       </style>
 
       <div style={{
-          backgroundColor: 'rgba(54, 41, 41, 0.75)',
+          backgroundColor: '#EFEFEF',
           width: '100%',
           height: '100%'
 
@@ -82,6 +84,8 @@ class App extends Component {
 							<Route path='/candidates' component={Candidates}/>
 							<Route path='/news' component={News}/>
               <Route path='/posts/:slug' component={Posts}/>
+              <Route path='/program/:slug' component={Posts}/>
+              <Route path='/candidatefinder' component={CandidateFinder}/>
 						</div>
 					</div>
 		</BrowserRouter>

@@ -11,9 +11,18 @@ import CList 						from '../components/CList'
 
 
 const rowStyle = {
-	border: '3px solid rgba(135, 140, 144, 0.83)',
 	margin: '5px',
+  backgroundColor: '#062F4F',
+  color: 'white',
+
+
 	// backgroundColor: 'red'
+}
+const textBoxStyle = {
+  fontSize: '20px',
+  display: 'flex',
+  alignItems: 'center',
+//  justifyContent: 'center',
 }
 
 const programs = [
@@ -54,9 +63,9 @@ export default class Program extends React.Component {
 				<Container>
 					<Row style={rowStyle}>
 						<Col xs="3">
-							<FontAwesome name={icons[i]} size='5x'/>
+							<FontAwesome style={{color: 'white'}}name={icons[i]} size='5x'/>
 						</Col>
-						<Col>
+						<Col style = {textBoxStyle}>
 							{programs[i]}
 						</Col>
 					</Row>

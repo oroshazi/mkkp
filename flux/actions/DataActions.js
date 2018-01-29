@@ -4,12 +4,13 @@ import alt          from '../alt/alt';
 class DataActions {
 
     constructor() {
-        const appUrl = 'http://local.wordpress.test'; // Wordpress installation url
+      //  const appUrl = 'http://juliajogacom.ipage.com/'; // Wordpress installation url
+        const appUrl = 'http://local.wordpress.test/';
 
         this.pagesEndPoint = `${appUrl}/wp-json/wp/v2/pages`; // Endpoint for getting Wordpress Pages
         this.postsEndPoint = `${appUrl}/wp-json/wp/v2/posts?_embed`; // Endpoint for getting Wordpress Posts
         this.postsfeaturedImageEndPoint = `${appUrl}/wp-json/wp/v2/posts?_embed`; // Endpoint for getting wp posts featured Image
-        
+
     }
 
     // Method for getting data from the provided end point url
