@@ -65,11 +65,12 @@ export default class Home extends React.Component{
         <Container>
           <Row >
             <Col style = {colStyle}>
-
+              <Link to = '/candidates'>
               <FontAwesome name='users' size='5x' style={imgStyle}/>
-
+            </Link>
             </Col>
             <Col style={textBoxStyle}>
+
               <div>
                 <FontAwesome name='arrow-circle-left' size='5x' style={arrowStyle}/>
               </div>
@@ -80,27 +81,33 @@ export default class Home extends React.Component{
       <Container>
         <Row >
           <Col style={textBoxStyle}>
-            szöveg a jeleőltekhez szöveg a jeleöltekhez   szöveg a jeleőltekhez
+            Maradj naprakész, itt elolvashatod a legfrissebb híreinket
             <div>
               <FontAwesome name='arrow-circle-right' size='5x' style={arrowStyle}/>
             </div>
           </Col>
+
           <Col style = {colStyle}>
+            <Link to="/news">
             <FontAwesome name='newspaper-o' size='5x' style={imgStyle}/>
+            </Link>
           </Col>
 
         </Row>
       </Container>
       <Container>
         <Row >
+
           <Col style = {colStyle}>
+            <Link to='/program'>
             <FontAwesome name='tasks' size='5x' style={imgStyle}/>
+            </Link>
           </Col>
           <Col style={textBoxStyle}>
             <div>
               <FontAwesome name='arrow-circle-left' size='5x' style={arrowStyle}/>
             </div>
-            .szöveg a jeleőltekhez szöveg a jeleőltekhez   szöveg a jeleőltekhez
+            7 millió szakértő és Cher bevonásával elkészült a választási programunk. Összesen 7800 oldalas lett. Ez úgy jön ki, hogy először olvassátok el a programunkat, aztán a Háború és Békét hatszor.
           </Col>
         </Row>
       </Container>

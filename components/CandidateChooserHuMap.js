@@ -14,9 +14,9 @@ class CandidateChooserHuMap extends Component {
     super()
     this.state = {
       worlddata: [],
-      fillprop: "#748aad",
-      circleR: 11,
-      circler: 7,
+      fillprop: "rgb(238, 18, 18)",
+      circleR: 25,
+      circler: 18,
       tooltipOpen: false,
       tooltipKey: '0'
     }
@@ -36,7 +36,7 @@ class CandidateChooserHuMap extends Component {
  }
   projection() {
     return geoMercator()
-      .scale(6200 )
+      .scale(6400 )
       .translate([825 /2, 400 /2])
       .center([19.30, 47.11]);
   }
@@ -115,7 +115,7 @@ class CandidateChooserHuMap extends Component {
                 key={ `path-${ i }` }
                 d={ geoPath().projection(this.projection())(d) }
                 // fill={ `rgba(44, 116, 106,${ 1 / this.state.worlddata.length * i})` }
-                fill={ `rgb(250, 250, 250)` }
+                fill={ `rgb(172, 92, 92)` }
                 stroke="#000000"
                 strokeWidth={ 1 }
                 onClick={ () => this.handleCountryClick(i) }
@@ -131,7 +131,7 @@ class CandidateChooserHuMap extends Component {
                 className={`circle- ${ i }`}
                 cx={ this.projection()(city.coordinates)[0] }
                 cy={ this.projection()(city.coordinates)[1] }
-                r={ 7 }
+                r={ 15 }
                 fill={ this.state.fillprop } //"#E91E63"
                 //fill= {'../src/Magyar_Kétfarkú_Kutyapárt_logó.svg'}
                 stroke="#FFFFFF"

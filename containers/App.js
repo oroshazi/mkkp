@@ -17,6 +17,7 @@ import News               from './News'
 import Home               from './Home'
 import Candidates         from './Candidates';
 import Posts              from './Posts';
+import Pages              from './Pages';
 
 
 
@@ -77,7 +78,7 @@ class App extends Component {
                 paddingTop: '40px',
 								height: '100%',
                 backgroundColor: 'rgba(251, 249, 249, 0.87)',
-                width:'960px'
+                width:'1155px'
 
 			        }}>
 							<Route exact path='/' component={Home}/>
@@ -85,6 +86,7 @@ class App extends Component {
 							<Route path='/candidates' component={Candidates}/>
 							<Route path='/news' component={News}/>
               <Route path='/posts/:slug' component={Posts}/>
+              <Route path='/pages/:slug' component={Pages}/>
               <Route path='/program/:slug' component={Posts}/>
               <Route path='/candidatefinder' component={CandidateFinder}/>
             {/* <Route path='/test' component={CandidateChooserZoomable}/> */}

@@ -3,7 +3,7 @@ import DataStore          from '../flux/stores/DataStore';
 
 
 
-export default class Posts extends React.Component {
+export default class Pages extends React.Component {
   constructor(props){
     super(props);
 
@@ -13,7 +13,7 @@ export default class Posts extends React.Component {
   render() {
     console.log(this.props.match.params.slug);
     var slug = this.props.match.params.slug;
-    var  post = DataStore.getPostBySlug(slug)
+    var  post = DataStore.getPageBySlug(slug)
     console.log(post);
     return(
       <div style={{backgroundColor: 'rgba(68, 123, 167, 0.99)'}}>

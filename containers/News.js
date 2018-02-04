@@ -20,10 +20,10 @@ const titleStyle = {
   // paddingRight: '0px',
   // paddingReft: '0px',
   // textAlign: 'center'
-  backgroundColor:'#B82601',
   marginTop: '5px',
   marginBottom:'5px',
-  color: 'white'
+  color: 'white',
+  borderBottom: '3px solid grey'
 }
 
 const colStyle = {
@@ -46,6 +46,7 @@ const rowStyle = {
 }
 
 const newsStyle = {
+  marginTop:'50px',
   height: '100%',
   width:'100px',
   paddingRight: '0px',
@@ -177,10 +178,10 @@ console.log('allposts:   ', allPosts);
   for (var i = 0; i < allPosts.length; i ++) {
     newsList.push((
         <Link to={'/posts/' + slugs[i]}>
-      <div className='side-posts'>
+      <div className='side-posts' >
       <li id = {i}
         onClick={(e) => this.handleClick(slugs, e)}
-
+        style={{color: 'white'}}
         >
 
           {allPosts[i].title.rendered}
@@ -206,7 +207,7 @@ console.log('allposts:   ', allPosts);
           </Col>
         </Row>
       </Container>
-      <Container >
+      <Container style = {{backgroundColor: '#062F4F'}} >
         <Row>
 
           <Col className="title" style={colStyle} >
@@ -222,7 +223,7 @@ console.log('allposts:   ', allPosts);
               </h1>
             </div>
           </Link>
-          <div style = {{border: '3px solid #B82601'}}>
+          <div style = {{borderBottom: '3px solid grey'}}>
             <Row style={rowStyle}
               id = {0}
               onClick={(e) => this.handleClick(slugs, e )}>
@@ -307,7 +308,7 @@ console.log('allposts:   ', allPosts);
             <style>
               {
                 `.side-posts {
-                  border: 1px solid rgba(135, 140, 144, 0.83);
+                  border-top: 1px solid rgba(135, 140, 144, 0.83);
                   padding: 14px 25px;
                   text-align: left;
                   text-decoration: none;
@@ -329,8 +330,8 @@ console.log('allposts:   ', allPosts);
                 }`
               }
             </style>
-            <div style={{newsStyle}}>
-              <ul>
+            <div style={newsStyle}>
+              <ul style = {{position: 'absolute', right: '0', }}>
                   {newsList}
               </ul>
             </div>

@@ -55,12 +55,29 @@ const icons = [
 	"eye"
 ];
 
+const slugs = [
+  "gazdasagi-programunk",
+  "egeszsegugyi-program",
+  "biztonsagpolitika",
+  "kornyezetvedelem",
+  "kozlekedespolitikaja",
+  "kozjo-politika",
+  "idojaraspolitika",
+  "valasztojogi-reform",
+  "igeretek-angliaban-dolgozo-magyaroknak",
+  "budapest-program",
+  "szegedi-program",
+  "latvanytervek"
+
+]
+
 export default class Program extends React.Component {
 	render () {
 		var programlist = [];
 		for (var i = 0; i < programs.length; i++ ){
 			programlist.push((
 				<Container>
+          <Link to = {'/posts/' + slugs[i]} >
 					<Row style={rowStyle}>
 						<Col xs="3">
 							<FontAwesome style={{color: 'white'}}name={icons[i]} size='5x'/>
@@ -69,12 +86,21 @@ export default class Program extends React.Component {
 							{programs[i]}
 						</Col>
 					</Row>
+          </Link>
 				</Container>
 			))
 		}
 		return (
 
-			<div >
+			<div>
+        <div>
+          <h1
+            style={{backgroundColor:'#062F4F', marginTop: '5px', marginBottom:'5px', color: 'white'}} >
+            <img src='../src/Magyar_Kétfarkú_Kutyapárt_logó.svg'
+            style={{height: '100px', width:'100px'}}/>
+            MKKP Pártprogram
+           </h1>
+        </div>
 
 				{programlist}
 		</div>

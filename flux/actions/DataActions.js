@@ -7,8 +7,8 @@ class DataActions {
       const appUrl = 'http://juliajogacom.ipage.com/'; // Wordpress installation url
       // const appUrl = 'http://local.wordpress.test/';
 
-        this.pagesEndPoint = `${appUrl}/wp-json/wp/v2/pages?_embed`; // Endpoint for getting Wordpress Pages
-        this.postsEndPoint = `${appUrl}/wp-json/wp/v2/posts?_embed`; // Endpoint for getting Wordpress Posts
+        this.pagesEndPoint = `${appUrl}/wp-json/wp/v2/pages?_embed&per_page=100`; // Endpoint for getting Wordpress Pages
+        this.postsEndPoint = `${appUrl}/wp-json/wp/v2/posts?_embed&per_page=100`; // Endpoint for getting Wordpress Posts
         this.postsfeaturedImageEndPoint = `${appUrl}/wp-json/wp/v2/posts?_embed`; // Endpoint for getting wp posts featured Image
 
     }

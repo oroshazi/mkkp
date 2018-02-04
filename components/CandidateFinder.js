@@ -22,6 +22,7 @@ constructor(props) {
         {id:13 , city: "Gödöllő",            constituency: "Pest megye 06.",            slug:"bosze-gabor",    coordinates: [19.36054, 47.60077],   candidate: "Bősze Gábor"},
         {id:15 , city: "Sopron",          constituency: "Győr-Moson-Sopron  04.",  slug:"tichy-racs-jozsef",    coordinates: [16.58448, 47.68166],   candidate: "Tichy-Rács József"},
         {id:17 , city: "Veszprém",          constituency: "Veszprém 01.",  slug:"szimmer-akos",    coordinates: [17.90930,47.10281],   candidate: "Szimmer Ákos"},
+        {id:30 , city: "Gyula",           constituency: "Békés megyei 03.",  slug:"kazinczy-istvan",    coordinates: [21.28333, 46.65 ], candidate: "Kazinczy István"},
         {id:18 , city: "Mohács",          constituency: "választókörzet #18",  slug:"error",    coordinates: [-118.2437,34.0522], candidate: "Példa Jelőlt18"},
         {id:19 , city: "Pécs",            constituency: "választókörzet #19",  slug:"error",    coordinates: [100.5018,13.7563],  candidate: "Példa Jelőlt19"},
         {id:20 , city: "Pécsvárad",       constituency: "választókörzet #20",  slug:"error",    coordinates: [88.3639,22.5726],   candidate: "Példa Jelőlt20"},
@@ -34,7 +35,6 @@ constructor(props) {
         {id:27 , city: "Békéscsaba",      constituency: "választókörzet #1",   slug:"babinszki-peter",    coordinates: [21.087731,46.673594],   candidate: "Babinszki Péter"},
         {id:28 , city: "Dévaványa",       constituency: "választókörzet #28",  slug:"error",    coordinates: [117.3616,39.3434],  candidate: "Példa Jelőlt28"},
         {id:29 , city: "Gyomaendrőd",     constituency: "választókörzet #29",  slug:"error",    coordinates: [2.3522,48.8566],    candidate: "Példa Jelőlt29"},
-        {id:30 , city: "Gyula",           constituency: "választókörzet #30",  slug:"error",    coordinates: [-77.0428,-12.0464], candidate: "Példa Jelőlt30"},
 
       ],
       budapest: [
@@ -70,15 +70,15 @@ render() {
   console.log('budapest', this.state.cities);
   return (
     <div style={{margin: '5px'}}>
-    <h1 style={{backgroundColor:'#062F4F', marginTop: '5px', marginBottom:'5px'}} >  <img src='../src/Magyar_Kétfarkú_Kutyapárt_logó.svg' style={{height: '100px', width:'100px'}}></img> </h1>
+    <h1 style={{backgroundColor:'#062F4F', marginTop: '5px', marginBottom:'0px', color: 'white'}} >  <img src='../src/Magyar_Kétfarkú_Kutyapárt_logó.svg' style={{height: '100px', width:'100px'}}></img> Az MKKP Jelöltjei</h1>
     <Container>
       <Row >
-         <Col  style ={{overflow: 'hidden'}}> <CandidateChooserImgView CandidateProps= {this.state} /></Col>
+         <Col  style ={{overflow: 'hidden', backgroundColor:'#ffffff'}}> <CandidateChooserImgView CandidateProps= {this.state} /></Col>
 
       </Row>
         <Row>
-          <Col style={{backgroundColor:'#813772'}} ><CandidateChooserHuMap CandidateProps= {this.state} callbackFromParent={this.myCallback} isLand={this.isLand}/> </Col>
-          <Col> <CandidateChooserBp CandidateProps = {this.state} isBudapest={this.isLand} callbackFromParent={this.myCallback} /> </Col>
+          <Col style={{backgroundColor:'#ffffff'}} ><CandidateChooserHuMap CandidateProps= {this.state} callbackFromParent={this.myCallback} isLand={this.isLand}/> </Col>
+          <Col style={{backgroundColor:'#ffffff'}}> <CandidateChooserBp CandidateProps = {this.state} isBudapest={this.isLand} callbackFromParent={this.myCallback} /> </Col>
 
         </Row>
 

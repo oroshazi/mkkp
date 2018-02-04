@@ -11,6 +11,8 @@ import { Button,
          FormText }       from 'reactstrap';
 import   FontAwesome 			from 'react-fontawesome';
 
+import { Link }           from 'react-router-dom';
+
 
 //TODO: refactoring needed
 //TODO: featured image for candidates
@@ -26,7 +28,14 @@ const textBoxStyle = {
 
 const rowStyle = {
 	margin: '5px',
-  backgroundColor: '#813772',
+  backgroundColor: '#062F4F',
+  color: 'white',
+	// backgroundColor: 'red'
+}
+
+const rowStyle2 = {
+	margin: '5px',
+  backgroundColor: '#000000',
   color: 'white',
 	// backgroundColor: 'red'
 }
@@ -62,8 +71,11 @@ export default class CList extends React.Component {
                      {
                        `
                          .candidate-${ i }:hover {
-                             background-color: #813772;
-                             border: 3px solid #062F4F;
+                             background-color: #062F4F;
+
+                         }
+                         a:hover {
+                           text-decoration: none;
                          }
 
                        `
@@ -73,7 +85,8 @@ export default class CList extends React.Component {
                    className={ `candidate-${ i }` }
                    key={ `candidate-${ i }` }
                    style={{}}>
-                   <Row id={ `container-row-${ i }` } style={rowStyle} >
+                   <Link to={'/pages/' + this.props.cProps[i].slug }>
+                   <Row id={ `container-row-${ i }` } style={(i % 2 == 0) ? rowStyle : rowStyle2} >
                      <Col xs="3" style={{height:'100px'}}>
                         <FontAwesome style={{display: 'flex',justifyContent: 'center',}} name='user' size='5x'/>
                       </Col>
@@ -97,6 +110,7 @@ export default class CList extends React.Component {
                        </div>
                       </Col>
                    </Row>
+                   </Link>
                  </Container>
                  </div>
                )
@@ -104,10 +118,15 @@ export default class CList extends React.Component {
            }
 
     return(
-      <div style={{ backgroundColor:'#000000', minHeight:'800px'}}>
+      <div style={{ backgroundColor:'white', minHeight:'800px'}}>
 
         <div>
-          <h1 style={{backgroundColor:'#062F4F', marginTop: '5px', marginBottom:'5px'}} >  <img src='../src/Magyar_Kétfarkú_Kutyapárt_logó.svg' style={{height: '100px', width:'100px'}}></img> </h1>
+          <h1
+            style={{backgroundColor:'#062F4F', marginTop: '5px', marginBottom:'5px', color: 'white'}} >
+            <img src='../src/Magyar_Kétfarkú_Kutyapárt_logó.svg'
+            style={{height: '100px', width:'100px'}}/>
+            MKKP Jelölt kereső
+           </h1>
         </div>
         <Form>
           <FormGroup>

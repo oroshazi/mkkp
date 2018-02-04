@@ -24,6 +24,7 @@ class DataStore {
     // Store data returned by getSuccess() in DataActions.js
     handleSuccess(data) {
         this.setState({ data });
+        console.log(data);
     }
 
     // Returns all pages and posts

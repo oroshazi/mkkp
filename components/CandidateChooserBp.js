@@ -37,7 +37,7 @@ class CandidateChooserBp extends Component {
  }
   projection() {
     return geoMercator()
-      .scale(60000)
+      .scale(85000)
       .translate([825 /2, 400 /2])
       .center([19.03991, 47.49801 ]);
   }
@@ -116,7 +116,7 @@ class CandidateChooserBp extends Component {
           </Tooltip>
 
 
-      <svg style={{    maxWidth: '100% ', height: 'auto', position: 'absolute', bottom: '0px', right: '0px', paddingLeft: '20px', paddingRight: '20px'}}
+      <svg style={{    maxWidth: '100% ', height: 'auto', position: 'absolute', bottom: '0px', top: '0', right: '0px', paddingLeft: '20px', paddingRight: '20px'}}
         viewBox="60 -100 750 600">
         <g className="bp.json"  >
           {
