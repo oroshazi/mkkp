@@ -4,7 +4,7 @@ import { Card, CardImg, CardText, CardBody, CardLink,
 import { Container, Row, Col }    from 'reactstrap';
 import DataStore from '../flux/stores/DataStore';
 
-
+//{id:10 , city: "Érd",                constituency: "Pest megye I.",  slug:"szecsi-barbara",   coordinates: [18.90454, 47.39197],  candidate: "Szécsi Barbara"},
 const cardColor = {
   backgroundColor: '#B82601',
   color: 'white',
@@ -21,47 +21,27 @@ export default class CandidateChooserImgView extends React.Component {
   }
 
   componentDidMount (slug) {
-    var postBySlug = DataStore.getPostBySlug(slug)
+    var postBySlug = DataStore.getPageBySlug(slug)
     return postBySlug;
   }
 
   render(){
 
-    var slug =  this.props.CandidateProps.cities[this.props.CandidateProps.candidateId].slug;
+    var slug =  (this.props.CandidateProps.candidateId) ? this.props.CandidateProps.cities[this.props.CandidateProps.candidateId].slug : 'error';
+    console.log("################################", slug);
+    console.log((this.props.CandidateProps.candidateId) ? this.props.CandidateProps.cities[this.props.CandidateProps.candidateId].slug : 'error');
     var postBySlug = this.componentDidMount(slug);
-    console.log(" paosdpapsdpoapsodpoapsodpaospdoapsodp:     ", postBySlug);
-    console.log('this.props.CandidateProps.candidateId', this.props.CandidateProps.candidateId);
-    console.log(this.props.CandidateProps.cities[this.props.CandidateProps.candidateId].slug);
     var error = DataStore.getPostBySlug('error');
 
-  return (
-    // <div >
-    //   <Card  >
-    //     <CardImg width="100%" height='100%'  src={(slug) ? postBySlug._embedded["wp:featuredmedia"][0].source_url :  error._embedded["wp:featuredmedia"][0].source_url} alt="Card image cap" />
-    //     <CardImgOverlay>
-    //       <CardTitle> {this.props.CandidateProps.cities[this.props.CandidateProps.candidateId].candidate } </CardTitle>
-    //       <CardText   dangerouslySetInnerHTML={{__html: (slug) ? postBySlug.excerpt.rendered.substring(0, 225) + '...' : 'nincsilyen TBU' }}></CardText>
-    //       <CardText>
-    //         <small className="text-muted">
-    //           <Container>
-    //               <Row>
-    //                 <Col > { this.props.CandidateProps.cities[this.props.CandidateProps.candidateId].city  }</Col>
-    //               </Row>
-    //               <Row>
-    //                 <Col > { this.props.CandidateProps.cities[this.props.CandidateProps.candidateId].constituency }</Col>
-    //               </Row>
-    //         </Container>
-    //
-    //         </small>
-    //       </CardText>
-    //     </CardImgOverlay>
-    //   </Card>
-    // </div>
+      var pagebySlug = DataStore.getPageBySlug(slug)
+      console.log('XXXXXXXXXXXXXXXXXXXXXXX', pagebySlug);
+      console.log('cccccccccccccccccccccccccccccccccc', this.props.CandidateProps.candidateId);
 
+  return (
     <div>
       <Card style={cardColor}>
         <CardBody>
-          <CardTitle>{this.props.CandidateProps.cities[this.props.CandidateProps.candidateId].candidate }</CardTitle>
+          <CardTitle>{this.props.CandidateProps.cities[this.props.CandidateProps .candidateId].candidate }</CardTitle>
           <CardSubtitle>
             <Container>
                 <Row>

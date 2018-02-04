@@ -61,8 +61,9 @@ export default class CList extends React.Component {
                    <style>
                      {
                        `
-                         .candidate-${ i }:hover .row  {
-                             background-color: #B82601;
+                         .candidate-${ i }:hover {
+                             background-color: #813772;
+                             border: 3px solid #062F4F;
                          }
 
                        `
@@ -103,7 +104,7 @@ export default class CList extends React.Component {
            }
 
     return(
-      <div>
+      <div style={{ backgroundColor:'#000000', minHeight:'800px'}}>
 
         <div>
           <h1 style={{backgroundColor:'#062F4F', marginTop: '5px', marginBottom:'5px'}} >  <img src='../src/Magyar_Kétfarkú_Kutyapárt_logó.svg' style={{height: '100px', width:'100px'}}></img> </h1>
@@ -121,7 +122,7 @@ export default class CList extends React.Component {
 
           </FormGroup>
         </Form>
-        <div style={{ margin: '0 auto'}}>
+        <div style={{ }}>
           {candidateList}
         </div>
     </div>

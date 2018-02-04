@@ -15,11 +15,15 @@ const tagStyle ={
   paddingReft: '0px'
 }
 const titleStyle = {
-  height:'60px',
-  width:'100%',
-  paddingRight: '0px',
-  paddingReft: '0px',
-  textAlign: 'center'
+   minHeight:'60px',
+  // width:'100%',
+  // paddingRight: '0px',
+  // paddingReft: '0px',
+  // textAlign: 'center'
+  backgroundColor:'#B82601',
+  marginTop: '5px',
+  marginBottom:'5px',
+  color: 'white'
 }
 
 const colStyle = {
@@ -28,12 +32,17 @@ const colStyle = {
   margin: '2px',
   // borderStyle:'solid',
   // borderRadius: '20px',
-  overflow: 'hidden'
+  overflow: 'hidden',
+  // border: '10px solid #062F4F'
+  //height: '200px'
 }
 
 const rowStyle = {
   marginLeft: '0',
-  marginRight: '0'
+  marginRight: '0',
+  //backgroundColor:'#062F4F',
+  marginTop: '5px',
+  marginBottom:'5px'
 }
 
 const newsStyle = {
@@ -44,14 +53,20 @@ const newsStyle = {
 
 }
 const excerptStyle = {
-  height: '300px',
-  width:'100%',
-  paddingRight: '0px',
-  paddingReft: '0px',
-  overflow: 'hidden',
-  marginTop: '30px',
-  textAlign: 'center',
-  verticalAlign: 'inherit'
+  fontSize: '20px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: 'black'
+
+  // height: '300px',
+  // width:'100%',
+  // paddingRight: '0px',
+  // paddingReft: '0px',
+  // overflow: 'hidden',
+  // marginTop: '30px',
+  // textAlign: 'center',
+  // verticalAlign: 'inherit'
 
 
 }
@@ -73,6 +88,25 @@ const textStyle = {
     color: 'white',
     paddingLeft: '20px',
     paddingRight: '20px'
+}
+
+const postContainerStyle = {
+    backgroundColor:'#062F4F',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+    width: 'auto',
+    height:'200px',
+    border: '5px solid #062F4F'
+  }
+
+const oddStyle = {
+  //fontSize: '200px',
+   display: 'flex',
+   alignItems: 'center',
+   justifyContent: 'center',
+   color: 'white'
 }
 
 export default class News extends React.Component{
@@ -97,17 +131,18 @@ render(){
     slugs.push((allPosts[i].slug))
   }
 console.log('allposts:   ', allPosts);
+//{position: 'relative', height:'150px', border: '3px solid rgb(17, 22, 6)'}
   var postsCol =[];
   for(var i = 0; i< allPosts.length; i++){
     postsCol.push((
 
         <Col style={colStyle}>
           <Link to={'/posts/' + slugs[i]}>
-          <div style={{position: 'relative', height:'150px', border: '3px solid rgb(17, 22, 6)'}}
+          <div style={ postContainerStyle }
             id = {i}
             onClick={(e) => this.handleClick(slugs, e)}
             >
-            <div className="item">
+            <div className="myitem">
             <img
               ref = "sliderimages"
               src={(allPosts[i]._embedded["wp:featuredmedia"]) ? allPosts[i]._embedded["wp:featuredmedia"][0].source_url :  'ninskép'}
@@ -171,7 +206,7 @@ console.log('allposts:   ', allPosts);
           </Col>
         </Row>
       </Container>
-      <Container>
+      <Container >
         <Row>
 
           <Col className="title" style={colStyle} >
@@ -187,6 +222,7 @@ console.log('allposts:   ', allPosts);
               </h1>
             </div>
           </Link>
+          <div style = {{border: '3px solid #B82601'}}>
             <Row style={rowStyle}
               id = {0}
               onClick={(e) => this.handleClick(slugs, e )}>
@@ -224,26 +260,39 @@ console.log('allposts:   ', allPosts);
               </Link>
               </Col>
             </Row>
+            </div>
             <style>
               {
                 `
-              .item {
+              .myitem {
                 position: relative;
                 min-height: 100%;
                 overflow: hidden;
                 min-width: 100%;
+                transition: all 0.3s;
+                backgroundColor:'#062F4F',
+                color: 'white',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '100%',
+                width: 'auto'
               }
-              .item img {
+              .myitem img {
                 min-width: 100%;
                 min-height: 100%;
                 -moz-transition: all 0.3s;
                 -webkit-transition: all 0.3s;
                 transition: all 0.3s;
               }
-              .item:hover img {
+              .myitem:hover img {
                 -moz-transform: scale(1.1);
                 -webkit-transform: scale(1.1);
                 transform: scale(1.1);
+              }
+              a:hover {
+                color: none;
+                text-decoration: none; /* no underline */
               }`
                 }
             </style>
