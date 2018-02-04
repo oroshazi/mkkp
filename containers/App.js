@@ -9,6 +9,7 @@ import InputPreview       from '../components/InputPreview';
 import HuMap              from '../components/HuMap';
 import NavBar             from '../components/NavBar';
 import CandidateFinder    from '../components/CandidateFinder';
+import CandidateChooserZoomable from '../components/CandidateChooserZoomable';
 
 
 import Program            from './Program';
@@ -86,6 +87,7 @@ class App extends Component {
               <Route path='/posts/:slug' component={Posts}/>
               <Route path='/program/:slug' component={Posts}/>
               <Route path='/candidatefinder' component={CandidateFinder}/>
+            {/* <Route path='/test' component={CandidateChooserZoomable}/> */}
 						</div>
 					</div>
 		</BrowserRouter>

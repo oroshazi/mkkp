@@ -15,8 +15,7 @@ export default class CandidateChooserImgView extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-
-
+      status: this.props.CandidateProps.status
     }
   }
 
@@ -25,37 +24,70 @@ export default class CandidateChooserImgView extends React.Component {
     return postBySlug;
   }
 
+
   render(){
 
-    var slug =  (this.props.CandidateProps.candidateId) ? this.props.CandidateProps.cities[this.props.CandidateProps.candidateId].slug : 'error';
-    console.log("################################", slug);
-    console.log((this.props.CandidateProps.candidateId) ? this.props.CandidateProps.cities[this.props.CandidateProps.candidateId].slug : 'error');
+    var status = this.props.CandidateProps.status
+    var slug =  (status == 'land') ? this.props.CandidateProps.land[this.props.CandidateProps.candidateId].slug : this.props.CandidateProps.budapest[this.props.CandidateProps.candidateId].slug ;
+    console.log('slug', slug);
     var postBySlug = this.componentDidMount(slug);
     var error = DataStore.getPostBySlug('error');
+  //  var pagebySlug = DataStore.getPageBySlug(slug)
 
-      var pagebySlug = DataStore.getPageBySlug(slug)
-      console.log('XXXXXXXXXXXXXXXXXXXXXXX', pagebySlug);
-      console.log('cccccccccccccccccccccccccccccccccc', this.props.CandidateProps.candidateId);
+
+//    console.log('post by slug: ', postBySlug);
+
+    //  console.log(DataStore.getPageBySlug('savkopo'));
+
 
   return (
     <div>
+
+      {/* <div>
+            <Card >
+                <CardImg   width= '100px' src={(slug) ? postBySlug._embedded["wp:featuredmedia"][0].source_url :  error._embedded["wp:featuredmedia"][0].source_url} alt="Card image cap" />
+              <CardImgOverlay>
+                <CardTitle>{() => changeCardTitle()  }</CardTitle>
+                <CardText>
+                  <Container>
+                    <Row>
+                      <Col > { this.props.CandidateProps.cities[this.props.CandidateProps.candidateId].city  }</Col>
+                    </Row>
+                    <Row>
+                      <Col > { this.props.CandidateProps.cities[this.props.CandidateProps.candidateId].constituency }</Col>
+                    </Row>
+              </Container>
+            </CardText>
+                <CardText>
+                  <small className="text-muted">Last updated 3 mins ago</small>
+                </CardText>
+              </CardImgOverlay>
+            </Card>
+          </div>
+ */}
+
+
+
       <Card style={cardColor}>
         <CardBody>
-          <CardTitle>{this.props.CandidateProps.cities[this.props.CandidateProps .candidateId].candidate }</CardTitle>
+          <CardTitle > <h1> { (status == 'land') ? this.props.CandidateProps.land[this.props.CandidateProps.candidateId].candidate : this.props.CandidateProps.budapest[this.props.CandidateProps.candidateId].candidate} </h1>
+
+                    {/* <h1> {(status == 'land') ? 'IGEEEN' : 'nem :( '} </h1> */}
+        </CardTitle>
           <CardSubtitle>
             <Container>
                 <Row>
-                  <Col > { this.props.CandidateProps.cities[this.props.CandidateProps.candidateId].city  }</Col>
+                  <Col > {(status == 'land') ? this.props.CandidateProps.land[this.props.CandidateProps.candidateId].city : this.props.CandidateProps.budapest[this.props.CandidateProps.candidateId].city}</Col>
                 </Row>
                 <Row>
-                  <Col > { this.props.CandidateProps.cities[this.props.CandidateProps.candidateId].constituency }</Col>
+                  <Col > { (status == 'land') ? this.props.CandidateProps.land[this.props.CandidateProps.candidateId].constituency : this.props.CandidateProps.budapest[this.props.CandidateProps.candidateId].constituency}</Col>
                 </Row>
           </Container>
           </CardSubtitle>
         </CardBody>
-        <img width="100%" src={(slug) ? postBySlug._embedded["wp:featuredmedia"][0].source_url :  error._embedded["wp:featuredmedia"][0].source_url} alt="Card image cap" />
+        <img width="100%" src={(slug != 'error') ? postBySlug._embedded["wp:featuredmedia"][0].source_url :  'hiba'} alt="Card image cap" />
         <CardBody>
-          <CardText dangerouslySetInnerHTML={{__html: (slug) ? postBySlug.excerpt.rendered.substring(0, 225) + '...' : 'nincsilyen TBU' }}></CardText>
+          <CardText dangerouslySetInnerHTML={{__html: (slug != 'error') ? postBySlug.excerpt.rendered.substring(0, 225) + '...' : 'nincsilyen TBU' }}></CardText>
         </CardBody>
       </Card>
     </div>

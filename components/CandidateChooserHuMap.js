@@ -45,8 +45,14 @@ class CandidateChooserHuMap extends Component {
   // TODO
   }
 
+  changeStatus() {
+    this.props.isLand('land')
+    console.log(this.props.CandidateProps.status);
+   }
+
   handleMarkerClick(i) {
   this.props.callbackFromParent(i)
+  this.changeStatus();
   }
 
   //Changing circle color & r attr + passing data to parent onMouseOver
@@ -91,17 +97,17 @@ class CandidateChooserHuMap extends Component {
               >
                 <Container>
                     <Row>
-                      <Col > {this.props.CandidateProps.cities[this.state.tooltipKey].candidate}</Col>
+                      <Col > {this.props.CandidateProps.land[this.state.tooltipKey].candidate}</Col>
                     </Row>
                     <Row>
-                      <Col > {this.props.CandidateProps.cities[this.state.tooltipKey].city}</Col>
+                      <Col > {this.props.CandidateProps.land[this.state.tooltipKey].city}</Col>
                     </Row>
               </Container>
 
           </Tooltip>
 
 
-      <svg style={{width: '100%', height:'auto'}} viewBox="60 -100 750 600">
+      <svg style={{width: '550px', height:'auto'}} viewBox="60 -100 750 600">
         <g className="admin_6.json"  >
           {
             this.state.worlddata.map((d,i) => (
@@ -119,7 +125,7 @@ class CandidateChooserHuMap extends Component {
         </g>
         <g className="markers">
           {
-            this.props.CandidateProps.cities.map((city, i) => (
+            this.props.CandidateProps.land.map((city, i) => (
               <circle
                 propKey={ `marker-${i}` }
                 className={`circle- ${ i }`}
@@ -132,6 +138,7 @@ class CandidateChooserHuMap extends Component {
                 className="marker"
                 id={'Cricle-' + i}
                 onClick={ () => this.handleMarkerClick(i)}
+                //onClick={(e) => this.changeStatus(e)}
                 onMouseEnter={ () => this.handleMarkerMouseOver('Cricle-' , i)}
                 onMouseLeave={() => this.handleMarkerMouseLeave ('Cricle-', i)}
                 //onMouseOver={()=> console.log(document.getElementById('Cricle-' + i))}
